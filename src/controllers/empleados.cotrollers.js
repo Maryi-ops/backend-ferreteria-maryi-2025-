@@ -1,10 +1,10 @@
 import { pool } from '../../db_connection.js';
 
-// Obtener todas las categorías
+// Obtener todas las empleados
 
-export const obtenerCategorias = async (req, res) => {
+export const obtenerEmpleados = async (req, res) => {
 try {
-const [result] = await pool.query('SELECT * FROM Categorias');
+const [result] = await pool.query('SELECT * FROM Empleados');
 res.json(result);
 } catch (error) {
 return res.status(500).json({
