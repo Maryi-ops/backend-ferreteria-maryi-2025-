@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { obtenerEmpleados } from '../controllers/empleados.cotrollers.js';
+import { obtenerEmpleados, obtenerEmpleado, registrarEmpleado } from '../controllers/empleados.cotrollers.js';
 
 const router = Router();
 
@@ -7,6 +7,9 @@ const router = Router();
 router.get('/empleados', obtenerEmpleados);
 
 // Ruta para obtener una empleado por su ID
-router.get('/empleados/:id_empleado', obtenerEmpleados);
+router.get('/empleados/:id_empleado', obtenerEmpleado);
+
+// Ruta para registrar una nueva empleado
+router.post('/empleados', registrarEmpleado);
 
 export default router;
