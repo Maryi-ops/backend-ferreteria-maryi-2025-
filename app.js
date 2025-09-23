@@ -16,7 +16,7 @@ import rutasVentas from  './src/routes/ventas.routes.js';
 
 
 // Crear la aplicación de Express
-const app =express();
+const app = express();
 
 // Habilitar CORS para cualquier origen
 app.use(cors({

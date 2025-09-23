@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { obtenerEmpleados, obtenerEmpleado, registrarEmpleado } from '../controllers/empleados.cotrollers.js';
+import { obtenerEmpleados, obtenerEmpleado, registrarEmpleado, eliminarEmpleado } from '../controllers/empleados.cotrollers.js';
 
 const router = Router();
 
@@ -11,5 +11,8 @@ router.get('/empleados/:id_empleado', obtenerEmpleado);
 
 // Ruta para registrar una nueva empleado
 router.post('/empleados', registrarEmpleado);
+
+// Ruta para eliminar una empleado por su ID
+router.delete('/eliminarempleados/:id_empleado', eliminarEmpleado);
 
 export default router;
