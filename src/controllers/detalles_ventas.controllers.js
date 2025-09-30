@@ -35,19 +35,19 @@ export const obtenerDetalle_Venta = async (req, res) => {
 // Registrar una nueva Detalle_Venta
 export const registrarDetalle_Venta = async (req, res) => {
     try {
-        const { 
+        const {
             id_venta,
             id_producto,
             cantidad,
             precio_unitario
         } = req.body;
-        
+
         const [result] = await pool.query(
             'INSERT INTO Detalles_Ventas (id_venta, id_producto, cantidad, precio_unitario) VALUES (?, ?, ?, ?)',
             [id_venta,
-            id_producto,
-            cantidad,
-            precio_unitario]
+                id_producto,
+                cantidad,
+                precio_unitario]
         );
         res.status(201).json({ id_detalle_venta: result.insertId });
     } catch (error) {
@@ -55,7 +55,7 @@ export const registrarDetalle_Venta = async (req, res) => {
             mensaje: 'Ha ocurrido un error al registrar el detalle de la venta.',
             error: error
         });
-        
+
     }
 };
 
@@ -74,6 +74,31 @@ export const eliminarDetalle_Venta = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             mensaje: "Ha ocurrido un error al eliminar el detalle de la venta.",
+            error: error
+        });
+    }
+};
+
+// Actualizar una detalle_venta por su ID
+export const actualizarDetalle_Venta = async (req, res) => {
+    try {
+        const id_detalle_venta = req.params.id_detalle_venta;
+        const { id_venta, id_producto, cantidad, precio_unitario } = req.body;
+        const [result] = await pool.query(
+            'UPDATE Detalles_Ventas SET id_venta = ?, id_producto = ?, cantidad = ?, precio_unitario = ? WHERE id_detalle_venta = ?',
+            [id_venta, id_producto, cantidad, precio_unitario, id_detalle_venta]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                mensaje: `Error al actualizar el detalle de la venta. El ID ${id_detalle_venta} no fue encontrado.`
+            });
+        }
+        res.status(200).json({
+            mensaje: `Detalle de venta con ID ${id_detalle_venta} actualizado exitosamente.`
+        });
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: "Ha ocurrido un error al actualizar la categoría.",
             error: error
         });
     }

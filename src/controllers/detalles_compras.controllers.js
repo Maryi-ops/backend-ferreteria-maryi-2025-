@@ -76,3 +76,29 @@ export const eliminarDetalle_Compra = async (req, res) => {
         });
     }
 };
+
+// Actualizar una detalle_compra por su ID
+export const actualizarDetalle_Compra = async (req, res) => {
+    try {
+        const id_detalle_compra = req.params.id_detalle_compra;
+        const { id_compra, id_producto, cantidad, precio_unitario } = req.body;
+        
+        const [result] = await pool.query(
+            'UPDATE Detalles_Compras SET id_compra = ?, id_producto = ?, cantidad = ?, precio_unitario = ? WHERE id_detalle_compra = ?',
+            [id_compra, id_producto, cantidad, precio_unitario, id_detalle_compra]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                mensaje: `Error al actualizar el detalle de la compra. El ID ${id_detalle_compra} no fue encontrado.`
+            });
+        }
+        res.status(200).json({ 
+            mensaje: `Detalle de compra con ID ${id_detalle_compra} actualizado exitosamente.`
+        });
+    } catch (error) {
+        return res.status(500).json({
+            mensaje: "Ha ocurrido un error al actualizar el detalle de la compra.",
+            error: error
+        });
+    }
+};
