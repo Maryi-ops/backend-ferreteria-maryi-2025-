@@ -10,7 +10,7 @@ router.get('/clientes', obtenerClientes);
 router.get('/clientes/:id_cliente', obtenerCliente);
 
 // Ruta para registrar una nueva cliente
-router.post('/clientes', registrarCliente);
+router.post('/registrarclientes', registrarCliente);
 
 // Ruta para eliminar una cliente por su ID
 router.delete('/eliminarclientes/:id_cliente', eliminarCliente);
