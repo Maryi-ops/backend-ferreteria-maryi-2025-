@@ -10,7 +10,7 @@ router.get('/usuarios', obtenerUsuarios);
 router.get('/usuarios/:id_usuario', obtenerUsuario);
 
 // Ruta para registrar una nueva usuario
-router.post('/usuarios', registrarUsuario);
+router.post('/registrarusuario', registrarUsuario);
 
 // Ruta para eliminar una usuario por su ID
 router.delete('/eliminarusuarios/:id_usuario', eliminarUsuario);
