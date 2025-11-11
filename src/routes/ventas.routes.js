@@ -10,13 +10,13 @@ router.get('/ventas', obtenerVentas);
 router.get('/ventas/:id_venta', obtenerVenta);
 
 // Ruta para registrar una nueva venta
-router.post('/registrarventa', registrarVenta); 
+router.post('/registrarventa', registrarVenta);
 
 // Ruta para eliminar una venta por su ID
 router.delete('/eliminarventa/:id_venta', eliminarVenta);
 
 // Ruta para actualizar una venta por su ID
-router.patch('/actualizarventa/:id_venta', actualizarVenta);
+router.put('/actualizarventa/:id_venta', actualizarVenta);
 
 
-export default router;
+export default router;   
