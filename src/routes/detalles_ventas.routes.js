@@ -4,13 +4,13 @@ import { obtenerDetalles_Ventas, obtenerDetalle_Venta, registrarDetalle_Venta, e
 const router = Router();
 
 // Rutas
-router.get('/detalles_ventas', obtenerDetalles_Ventas);
+router.get('/detallesventas', obtenerDetalles_Ventas);
 
 // Ruta para obtener una detalle_venta por su ID
-router.get('/detalles_ventas/:id_detalle_venta', obtenerDetalle_Venta);
+router.get('/detallesventas/:id_detalle_venta', obtenerDetalle_Venta);
 
 // Ruta para registrar una nueva detalle_venta
-router.post('/detalles_ventas', registrarDetalle_Venta);
+router.post('/registrardetallesventas', registrarDetalle_Venta);
 
 // Ruta para eliminar una detalle_venta por su ID
 router.delete('/eliminardetalleventas/:id_detalle_venta', eliminarDetalle_Venta);

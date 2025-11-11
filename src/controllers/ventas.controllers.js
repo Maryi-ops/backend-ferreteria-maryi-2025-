@@ -1,3 +1,4 @@
+
 import { pool } from '../../db_connection.js';
 
 // Obtener todas las ventas
@@ -12,8 +13,7 @@ export const obtenerVentas = async (req, res) => {
             error: error
         });
     }
-};
-
+}
 
 export const obtenerVenta = async (req, res) => {
     try {
@@ -101,3 +101,4 @@ export const actualizarVenta = async (req, res) => {
         });
     }
 };
+
